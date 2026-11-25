@@ -1,0 +1,1520 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UNESCO Dünya Mirası Mimari Karşılaştırmaları | Emre Erkan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --krem: #F6EFE0;
+      --krem-koyu: #EAE0CA;
+      --tas: #3F3D3A;
+      --tas-acik: #5C5954;
+      --kum: #D9A441;
+      --kiremit: #A8432B;
+      --beyaz: #FFFDF9;
+      --golge: 0 12px 32px rgba(63, 61, 58, 0.1);
+      --golge-hover: 0 18px 40px rgba(63, 61, 58, 0.16);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--krem);
+      color: var(--tas);
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Lora', serif;
+      color: var(--tas);
+      line-height: 1.2;
+    }
+
+    /* Üst Sabit Gezinme Çubuğu */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(63, 61, 58, 0.96);
+      backdrop-filter: blur(8px);
+      color: var(--krem);
+      z-index: 1000;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .nav-container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--kum);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--krem);
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 600;
+      padding: 8px 14px;
+      border-radius: 10px;
+      transition: background-color 0.2s, color 0.2s;
+    }
+
+    .nav-links a:hover {
+      background-color: var(--kum);
+      color: var(--tas);
+    }
+
+    /* Genel Konteyner ve Bölüm Yapısı */
+    .container {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 76px 0;
+      border-bottom: 1px solid rgba(63, 61, 58, 0.1);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-header {
+      margin-bottom: 42px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      background-color: var(--kum);
+      color: var(--tas);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(34px, 4vw, 48px);
+      color: var(--kiremit);
+      margin-bottom: 12px;
+    }
+
+    .section-desc {
+      font-size: 21px;
+      color: var(--tas-acik);
+      max-width: 820px;
+    }
+
+    /* 1. Hero / Kapak Bölümü */
+    .hero-section {
+      padding: 64px 0 80px;
+    }
+
+    .hero-grid {
+      background-color: var(--beyaz);
+      border: 2px solid var(--kum);
+      border-radius: 28px;
+      padding: 48px;
+      box-shadow: var(--golge);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 44px;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: clamp(38px, 4.5vw, 56px);
+      color: var(--tas);
+      margin: 14px 0 18px;
+    }
+
+    .hero-subtitle {
+      font-size: 24px;
+      color: var(--kiremit);
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero-text {
+      color: var(--tas-acik);
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+
+    .author-card {
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      background-color: var(--krem);
+      border-left: 6px solid var(--kiremit);
+      padding: 14px 24px;
+      border-radius: 14px;
+    }
+
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background-color: var(--tas);
+      color: var(--kum);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Lora', serif;
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    .author-info strong {
+      display: block;
+      font-size: 21px;
+      color: var(--tas);
+    }
+
+    .author-info span {
+      font-size: 17px;
+      color: var(--tas-acik);
+      font-weight: 600;
+    }
+
+    .cover-illustration {
+      background: linear-gradient(145deg, #3F3D3A 0%, #2C2A28 100%);
+      border-radius: 22px;
+      padding: 16px;
+      box-shadow: inset 0 0 0 2px rgba(217, 164, 65, 0.35);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cover-illustration img {
+      width: 100%;
+      height: 310px;
+      object-fit: cover;
+      border-radius: 14px;
+      display: block;
+    }
+
+    .cover-caption {
+      color: var(--krem);
+      font-size: 15px;
+      margin-top: 12px;
+      opacity: 0.9;
+      text-align: center;
+    }
+
+    /* 2. Mimari Karşılaştırmalar */
+    .era-block {
+      margin-bottom: 56px;
+    }
+
+    .era-block:last-child {
+      margin-bottom: 0;
+    }
+
+    .era-heading {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 32px;
+      margin-bottom: 24px;
+      color: var(--tas);
+    }
+
+    .era-heading::after {
+      content: "";
+      flex: 1;
+      height: 2px;
+      background-color: rgba(63, 61, 58, 0.15);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+
+    .arch-card {
+      background-color: var(--beyaz);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--golge);
+      border-top: 8px solid var(--kum);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .arch-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--golge-hover);
+    }
+
+    .arch-card.alt {
+      border-top-color: var(--kiremit);
+    }
+
+    .arch-visual {
+      width: 100%;
+      height: 250px;
+      background-color: var(--krem-koyu);
+      overflow: hidden;
+      border-bottom: 1px solid rgba(63, 61, 58, 0.08);
+      position: relative;
+    }
+
+    .arch-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .arch-card:hover .arch-visual img {
+      transform: scale(1.04);
+    }
+
+    .arch-body {
+      padding: 28px;
+      flex: 1;
+    }
+
+    .arch-location {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--kiremit);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      display: block;
+    }
+
+    .arch-body h4 {
+      font-size: 30px;
+      margin-bottom: 16px;
+    }
+
+    .arch-body ul {
+      list-style: none;
+    }
+
+    .arch-body li {
+      position: relative;
+      padding-left: 24px;
+      margin-bottom: 10px;
+      font-size: 19px;
+      color: var(--tas);
+    }
+
+    .arch-body li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--kiremit);
+      font-weight: 700;
+      font-size: 24px;
+      line-height: 1.2;
+    }
+
+    .summary-banner {
+      background-color: var(--tas);
+      color: var(--krem);
+      padding: 18px 26px;
+      border-radius: 16px;
+      font-size: 20px;
+      border-left: 10px solid var(--kum);
+    }
+
+    .summary-banner strong {
+      color: var(--kum);
+    }
+
+    /* 3. Safranbolu Evleri */
+    .triple-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 26px;
+      margin-bottom: 24px;
+    }
+
+    .info-card {
+      background-color: var(--beyaz);
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: var(--golge);
+      border-bottom: 8px solid var(--kum);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .info-visual {
+      height: 200px;
+      background-color: var(--krem-koyu);
+      overflow: hidden;
+    }
+
+    .info-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .info-content {
+      padding: 26px;
+      flex: 1;
+    }
+
+    .info-content h3 {
+      font-size: 28px;
+      color: var(--kiremit);
+      margin-bottom: 14px;
+    }
+
+    .info-content ul {
+      list-style: none;
+    }
+
+    .info-content li {
+      position: relative;
+      padding-left: 22px;
+      margin-bottom: 10px;
+      font-size: 19px;
+    }
+
+    .info-content li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: var(--kum);
+    }
+
+    .big-metric {
+      font-family: 'Lora', serif;
+      font-size: 46px;
+      font-weight: 700;
+      color: var(--kiremit);
+      margin: 8px 0 12px;
+    }
+
+    /* 4. MediaPipe Dikey Video (9:16) + Geniş Kamera Düzeni */
+    .mp-workspace {
+      background-color: var(--tas);
+      color: var(--krem);
+      border-radius: 26px;
+      padding: 32px;
+      box-shadow: var(--golge);
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .mp-stage-grid {
+      display: flex;
+      gap: 28px;
+      align-items: stretch;
+      justify-content: center;
+      height: 580px;
+    }
+
+    /* Sol Sütun: Sabit 9:16 Dikey Video Sahnesi (Sayfa şeklini bozmaz) */
+    .mp-screen-box {
+      position: relative;
+      height: 100%;
+      aspect-ratio: 9 / 16;
+      flex-shrink: 0;
+      background-color: #0e0d0c;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid var(--kum);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .mp-screen-box video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background-color: #0e0d0c;
+      display: none;
+    }
+
+    /* Sağ Sütun: Tam Genişlikte Kamera + Butonlar */
+    .mp-cam-column {
+      flex: 1;
+      min-width: 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .mp-cam-box {
+      position: relative;
+      flex: 1;
+      width: 100%;
+      min-height: 0;
+      background-color: #0e0d0c;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2px solid rgba(217, 164, 65, 0.5);
+    }
+
+    .mp-cam-box video,
+    .mp-cam-box canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scaleX(-1);
+    }
+
+    .mp-commands-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .mp-chapters-bar {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .gesture-row {
+      background-color: rgba(246, 239, 224, 0.08);
+      border-left: 5px solid var(--kum);
+      border-radius: 12px;
+      padding: 14px 18px;
+    }
+
+    .gesture-row strong {
+      display: block;
+      color: var(--kum);
+      font-size: 19px;
+      margin-bottom: 2px;
+    }
+
+    .gesture-row span {
+      font-size: 17px;
+      color: var(--krem);
+    }
+
+    /* 5. Rapor Kartı ve Sabit/Titremesiz Modal */
+    .report-banner-card {
+      background-color: var(--beyaz);
+      border: 2px solid var(--kum);
+      border-radius: 26px;
+      padding: 40px;
+      box-shadow: var(--golge);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 32px;
+      align-items: center;
+      width: 100%;
+    }
+
+    .report-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background-color: rgba(24, 23, 21, 0.88);
+      z-index: 3000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .report-modal-overlay.is-open {
+      display: flex;
+    }
+
+    .report-modal-box {
+      background-color: var(--beyaz);
+      color: var(--tas);
+      width: 100%;
+      max-width: 1060px;
+      height: 86vh;
+      border-radius: 24px;
+      border: 3px solid var(--kum);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    .report-modal-body {
+      padding: 36px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior: contain;
+      line-height: 1.75;
+      font-size: 19px;
+      flex: 1;
+    }
+
+    /* 6. Kaynaklar */
+    .sources-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .source-card {
+      background-color: var(--beyaz);
+      border: 2px solid rgba(63, 61, 58, 0.2);
+      border-radius: 20px;
+      padding: 26px 30px;
+      text-decoration: none;
+      color: var(--tas);
+      box-shadow: var(--golge);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color 0.25s, transform 0.25s;
+    }
+
+    .source-card:hover {
+      border-color: var(--kiremit);
+      transform: translateY(-3px);
+    }
+
+    .source-card h3 {
+      font-size: 26px;
+      color: var(--kiremit);
+      margin-bottom: 4px;
+    }
+
+    .source-card span {
+      font-size: 18px;
+      color: var(--tas-acik);
+      font-weight: 600;
+    }
+
+    .source-arrow {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--kum);
+    }
+
+    /* Alt Bilgi */
+    footer {
+      background-color: var(--tas);
+      color: var(--krem);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 17px;
+    }
+
+    footer strong {
+      color: var(--kum);
+    }
+
+    /* Responsive Uyum */
+    @media (max-width: 960px) {
+      .hero-grid, .compare-grid, .triple-grid, .sources-grid,
+      .mp-commands-bar, .mp-chapters-bar, .report-banner-card {
+        grid-template-columns: 1fr;
+      }
+      .hero-grid {
+        padding: 28px;
+      }
+      .mp-stage-grid {
+        flex-direction: column;
+        height: auto;
+        align-items: center;
+      }
+      .mp-screen-box {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+        aspect-ratio: 9 / 16;
+      }
+      .mp-cam-column {
+        width: 100%;
+        height: auto;
+      }
+      .mp-cam-box {
+        aspect-ratio: 4 / 3;
+        min-height: 280px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Üst Gezinme Çubuğu -->
+  <header>
+    <div class="nav-container">
+      <a href="#ana-sayfa" class="brand">
+        <span>🏛️</span>
+        <span>UNESCO Mimari Karşılaştırmaları</span>
+      </a>
+      <nav class="nav-links" aria-label="Sayfa Bölümleri">
+        <a href="#ana-sayfa">Ana Sayfa</a>
+        <a href="#karsilastirmalar">Karşılaştırmalar</a>
+        <a href="#safranbolu">Safranbolu Evleri</a>
+        <a href="#mediapipe">MediaPipe Uygulaması</a>
+        <a href="#rapor">Proje Raporu</a>
+        <a href="#kaynaklar">Kaynaklar</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- 1. BÖLÜM: ANA SAYFA / PROJE TANITIMI -->
+  <section id="ana-sayfa" class="hero-section">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="section-tag">9. Sınıf eTwinning Projesi</span>
+          <h1 class="hero-title">UNESCO Dünya Mirası Mimari Karşılaştırmaları</h1>
+          <p class="hero-subtitle">Mimari Felsefe, Malzeme ve Mühendislik Farkları</p>
+          <p class="hero-text">
+            Farklı çağlarda ve coğrafyalarda inşa edilen anıtsal yapıların taşıyıcı sistemlerini, malzeme tercihlerini ve kültürel sembolizmini karşılaştırmalı olarak inceleyen öğrenci araştırma ve teknoloji projesi.
+          </p>
+          <div class="author-card">
+            <div class="author-avatar">EE</div>
+            <div class="author-info">
+              <strong>Emre Erkan</strong>
+              <span>9/E Sınıfı Öğrencisi</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Proje Kapak Görseli (Gerçek Fotoğraf) -->
+        <div class="cover-illustration">
+          <img
+            src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Parthenon_in_Athens.jpg?width=900"
+            alt="Atina Akropolü ve Parthenon Tapınağı"
+            onerror="this.onerror=null;this.src='https://placehold.co/900x600/3F3D3A/D9A441?text=UNESCO+D%C3%BCnya+Miras%C4%B1+Mimari+Kar%C5%9F%C4%B1la%C5%9Ft%C4%B1rmalar%C4%B1';"
+          />
+          <span class="cover-caption">Antik Dönemden Günümüze Mimari Felsefe ve Mühendislik Mirası</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. BÖLÜM: MİMARİ KARŞILAŞTIRMALAR -->
+  <section id="karsilastirmalar">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Dönemsel Analiz</span>
+        <h2 class="section-title">Mimari Karşılaştırmalar</h2>
+        <p class="section-desc">Üç farklı tarihsel dönemde medeniyetlerin taş, geometri ve mekân anlayışındaki temel yaklaşımlar.</p>
+      </div>
+
+      <!-- 1. Neolitik Dönem -->
+      <div class="era-block">
+        <h3 class="era-heading">1. Neolitik Dönem</h3>
+        <div class="compare-grid">
+          <!-- Göbeklitepe -->
+          <article class="arch-card">
+            <div class="arch-visual">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/G%C3%B6beklitepe_%C5%9Eanl%C4%B1urfa.jpg?width=800"
+                alt="Göbeklitepe Arkeolojik Alanı ve T-Sütunlar"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/EAE0CA/3F3D3A?text=G%C3%B6beklitepe';"
+              />
+            </div>
+            <div class="arch-body">
+              <span class="arch-location">Şanlıurfa / Türkiye • İlk İnanç Merkezi</span>
+              <h4>Göbeklitepe</h4>
+              <ul>
+                <li>Çakmak taşı ve obsidyenle işlenen anıtsal T-sütunlar</li>
+                <li>Su geçirmez terrazzo taban uygulaması</li>
+                <li>Koruyucu leopar ve yaban domuzu kabartmaları</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Stonehenge -->
+          <article class="arch-card alt">
+            <div class="arch-visual">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Stonehenge2007_07_30.jpg?width=800"
+                alt="Stonehenge Megalitik Anıtı"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/EAE0CA/3F3D3A?text=Stonehenge';"
+              />
+            </div>
+            <div class="arch-body">
+              <span class="arch-location">Wiltshire / İngiltere • Megalitik Anıt</span>
+              <h4>Stonehenge</h4>
+              <ul>
+                <li>Düz lento (trilithon) taşıyıcı taş sistemi</li>
+                <li>Heykelsi kabartmalardan arınmış yalın kütleler</li>
+                <li>Astronomik ve takvimsel gözlem alanı</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="summary-banner">
+          <strong>Özet:</strong> Göbeklitepe inanç odaklı heykelsi taş işçiliği, Stonehenge astronomi odaklı masif mühendislik.
+        </div>
+      </div>
+
+      <!-- 2. Antik Dönem -->
+      <div class="era-block">
+        <h3 class="era-heading">2. Antik Dönem</h3>
+        <div class="compare-grid">
+          <!-- Parthenon -->
+          <article class="arch-card">
+            <div class="arch-visual">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/The_Parthenon_in_Athens.jpg?width=800"
+                alt="Atina Parthenon Tapınağı"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/EAE0CA/3F3D3A?text=Parthenon';"
+              />
+            </div>
+            <div class="arch-body">
+              <span class="arch-location">Atina / Yunanistan • Klasik Yunan</span>
+              <h4>Parthenon Tapınağı</h4>
+              <ul>
+                <li>857,6 mm temel modül, 4:9 ve 3:2 Pisagor müzikal oranları</li>
+                <li>Entasis tekniği ile sütunlarda optik göz yanılsaması düzeltmesi</li>
+                <li>Pentelik mermer bloklarla milimetrik kenetli birleşim</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Kolezyum -->
+          <article class="arch-card alt">
+            <div class="arch-visual">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Rome_-_Exterior_of_the_Colosseum_(5178267201).jpg?width=800"
+                alt="Roma Kolezyumu"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/EAE0CA/3F3D3A?text=Kolezyum';"
+              />
+            </div>
+            <div class="arch-body">
+              <span class="arch-location">Roma / İtalya • Roma İmparatorluğu</span>
+              <h4>Kolezyum</h4>
+              <ul>
+                <li>Kemer, tonoz ve yer altı galerileri (hypogeum) sistemi</li>
+                <li>Traverten bloklar ve antik Roma betonu (opus caementicium)</li>
+                <li>80.000 kişilik kamusal amfitiyatro mühendisliği</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="summary-banner">
+          <strong>Özet:</strong> Parthenon kutsal ve felsefi bir oran sanatı, Kolezyum kitlesel ve işlevsel devlet mühendisliği.
+        </div>
+      </div>
+
+      <!-- 3. Orta Çağ İslam Sanatı -->
+      <div class="era-block">
+        <h3 class="era-heading">3. Orta Çağ İslam Sanatı</h3>
+        <div class="compare-grid">
+          <!-- Ahlat Selçuklu Mezarlığı -->
+          <article class="arch-card">
+            <div class="arch-visual">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Turkey_Seljuk_Cemetery_Ahlat_(06).jpg?width=800"
+                alt="Ahlat Selçuklu Meydan Mezarlığı"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/EAE0CA/3F3D3A?text=Ahlat+Mezarl%C4%B1%C4%9F%C4%B1';"
+              />
+            </div>
+            <div class="arch-body">
+              <span class="arch-location">Bitlis / Türkiye • Açık Hava Anıtı</span>
+              <h4>Ahlat Selçuklu Mezarlığı</h4>
+              <ul>
+                <li>Krem-beyaz ve kiremit kırmızısı volkanik tüf (ignimbrit)</li>
+                <li>Açık havada oyulmuş 5 metreye ulaşan anıtsal şahideler</li>
+                <li>Orhun Abideleri ve İslam hat sanatının taş üzerindeki sentezi</li>
+              </ul>
+            </div>
+          </article>
+
+          <!-- Elhamra Sarayı -->
+          <article class="arch-card alt">
+            <div class="arch-visual">
+              <img
+                src="https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_Patio_de_los_Leones.jpg?width=800"
+                alt="Elhamra Sarayı Aslanlı Avlu"
+                onerror="this.onerror=null;this.src='https://placehold.co/800x500/EAE0CA/3F3D3A?text=Elhamra+Saray%C4%B1';"
+              />
+            </div>
+            <div class="arch-body">
+              <span class="arch-location">Granada / İspanya • Endülüs Mimarisi</span>
+              <h4>Elhamra Sarayı</h4>
+              <ul>
+                <li>İnce oymalı alçı (stuko), ahşap ve çini mozaik (zillij)</li>
+                <li>Duvarlarda tekrarlanan “Lâ Galibe İllallah” hat yazıları</li>
+                <li>Işık, su ve gölgeyi birleştiren narin iç mekân estetiği</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="summary-banner">
+          <strong>Özet:</strong> Ahlat sert taşın dış mekândaki anıtsal oymacılığı, Elhamra stuko ve çininin iç mekândaki narin zarafeti.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. BÖLÜM: SAFRANBOLU EVLERİ -->
+  <section id="safranbolu">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Geleneksel Sivil Mimari</span>
+        <h2 class="section-title">Safranbolu Evleri</h2>
+        <p class="section-desc">Karabük’te Osmanlı kent dokusunu koruyan, doğaya ve iklime uyumlu sürdürülebilir konut mimarisi.</p>
+      </div>
+
+      <div class="triple-grid">
+        <article class="info-card">
+          <div class="info-visual">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Safranbolu_traditional_houses.jpg?width=700"
+              alt="Safranbolu Evleri Genel Görünüm"
+              onerror="this.onerror=null;this.src='https://placehold.co/700x420/EAE0CA/3F3D3A?text=Do%C4%9Fayla+Uyum';"
+            />
+          </div>
+          <div class="info-content">
+            <h3>Doğayla Uyum</h3>
+            <ul>
+              <li>Eğime paralel yerleşim: evler birbirinin güneşini ve manzarasını kapatmaz.</li>
+              <li>Yazlık yerleşim: serin ve havadar <strong>Bağlar</strong> bölgesi.</li>
+              <li>Kışlık yerleşim: rüzgârdan korunaklı <strong>Çukur</strong> bölgesi.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <div class="info-visual">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Safranbolu_Kaymakamlar_Evi.jpg?width=700"
+              alt="Safranbolu Hımış Yapı Tekniği"
+              onerror="this.onerror=null;this.src='https://placehold.co/700x420/EAE0CA/3F3D3A?text=Pasif+S%C3%BCrd%C3%BCr%C3%BClebilirlik';"
+            />
+          </div>
+          <div class="info-content">
+            <h3>Pasif Sürdürülebilirlik</h3>
+            <ul>
+              <li>Nem yalıtımlı mavi kalker taş temel ve esnek <strong>hımış</strong> tekniği.</li>
+              <li>Isıyı koruyan düşük tavanlı kışlık katlar.</li>
+              <li>Yağmur suyunu yönlendiren sokak arkları ve odalarda gömme gusülhaneler.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="info-card">
+          <div class="info-visual">
+            <img
+              src="https://commons.wikimedia.org/wiki/Special:FilePath/Safranbolu_Cinci_Han%C4%B1.jpg?width=700"
+              alt="Safranbolu Tarihi Kent Dokusu"
+              onerror="this.onerror=null;this.src='https://placehold.co/700x420/EAE0CA/3F3D3A?text=Performans';"
+            />
+          </div>
+          <div class="info-content">
+            <h3>Enerji Performansı</h3>
+            <div class="big-metric">98,6 kWh/m²</div>
+            <ul>
+              <li>Yıllık enerji tüketimi ile uluslararası sürdürülebilirlik hedeflerini yakalar.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+
+      <div class="summary-banner">
+        <strong>Özet:</strong> Doğaya meydan okumak yerine doğayla uyum içinde yaşamanın ekolojik kanıtı.
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. BÖLÜM: MEDIAPIPE PROJEM (DİKEY VİDEO + TAM GENİŞLİKTE KAMERA DÜZENİ) -->
+  <section id="mediapipe">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Canlı Yapay Zekâ Uygulaması</span>
+        <h2 class="section-title">MediaPipe Projem: El Hareketiyle Video Kontrolü</h2>
+        <p class="section-desc">Kameranızı başlatarak veya elinizi kullanarak “UNESCO Bridges” tanıtım sunumunu temassız kontrol edin.</p>
+      </div>
+
+      <div class="mp-workspace">
+        <!-- Üst: Sabit Dikey Video Sahnesi (9:16) + Geniş Kamera ve El İskeleti Ekranı -->
+        <div class="mp-stage-grid">
+          <!-- Sol: Dikey Video / Sunum Sahnesi -->
+          <div class="mp-screen-box">
+            <video id="mpVideo" playsinline loop muted></video>
+
+            <div id="mpSlideStage" style="width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: flex-end; padding: 18px; background-size: cover; background-position: center;">
+              <div style="background: rgba(24, 23, 21, 0.9); padding: 16px 18px; border-radius: 14px; border-left: 5px solid var(--kum); margin-bottom: 14px;">
+                <div id="mpChapTitle" style="font-family: 'Lora', serif; font-size: 20px; font-weight: 700; color: var(--kum);">1/6 • Giriş – UNESCO Bridges</div>
+                <div id="mpChapSub" style="font-size: 14px; color: var(--krem); margin-top: 4px;">Kamerayı başlatın veya videonuzu seçip el hareketleriyle yönetin.</div>
+              </div>
+            </div>
+
+            <!-- Üst Durum Çubuğu -->
+            <div style="position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.8); padding: 8px 12px; border-radius: 10px; font-size: 13px; z-index: 2;">
+              <span id="mpPlayState" style="color: var(--kum); font-weight: 700;">DURAKLATILDI ⏸</span>
+              <span id="mpTimeText" style="font-weight: 600;">0.0 / 19.8 sn</span>
+            </div>
+
+            <!-- Bekleme Göstergesi -->
+            <div id="mpHoldBadge" style="position: absolute; left: 50%; top: 45%; transform: translate(-50%, -50%); background: rgba(168, 67, 43, 0.96); color: #fff; padding: 12px 20px; border-radius: 999px; font-weight: 700; font-size: 16px; display: none; box-shadow: 0 10px 28px rgba(0,0,0,0.5); white-space: nowrap; z-index: 3;">
+              <span id="mpHoldText">Tutuluyor...</span>
+            </div>
+
+            <!-- Zaman Çubuğu -->
+            <div id="mpProgressBar" style="position: absolute; left: 10px; right: 10px; bottom: 10px; height: 8px; background: rgba(255,255,255,0.28); border-radius: 4px; cursor: pointer; z-index: 2;">
+              <div id="mpProgressFill" style="height: 100%; width: 0%; background: var(--kum); border-radius: 4px;"></div>
+            </div>
+          </div>
+
+          <!-- Sağ: Tam Genişlikte Kamera ve 21 Nokta El Takip Alanı -->
+          <div class="mp-cam-column">
+            <div class="mp-cam-box">
+              <video id="mpCam" playsinline muted></video>
+              <canvas id="mpCanvas"></canvas>
+              <div style="position: absolute; top: 12px; left: 12px; right: 12px; display: flex; justify-content: space-between; align-items: center; background: rgba(0,0,0,0.75); padding: 8px 14px; border-radius: 10px; font-size: 15px; z-index: 2;">
+                <span style="color: var(--kum); font-weight: 700;">Kamera &amp; El Takibi</span>
+                <span id="mpDetectedGest" style="color: #fff; font-weight: 600;">Algılanan: –</span>
+              </div>
+            </div>
+
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <button id="mpStartBtn" type="button" style="flex: 1; background: var(--kum); color: var(--tas); border: none; padding: 14px 20px; border-radius: 12px; font-weight: 700; font-size: 18px; cursor: pointer;">
+                📷 Kamerayı Başlat
+              </button>
+              <button id="mpPickVideoBtn" type="button" style="background: rgba(246, 239, 224, 0.14); color: var(--krem); border: 1px solid rgba(246, 239, 224, 0.35); padding: 14px 18px; border-radius: 12px; font-weight: 600; font-size: 17px; cursor: pointer;">
+                🎬 Video Seç (.mp4)
+              </button>
+              <input id="mpFileInput" type="file" accept="video/*,.mp4,.mov,.webm" hidden />
+            </div>
+          </div>
+        </div>
+
+        <!-- Durum Bilgisi -->
+        <p id="mpStatusMsg" style="font-size: 16px; color: #e2dacb; background: rgba(255,255,255,0.06); padding: 12px 18px; border-radius: 12px;">
+          Hazır: “Kamerayı Başlat” butonuna basarak el hareketleriyle sunumu kontrol edebilirsiniz. Elinizi kameraya 40–60 cm uzaklıkta, avucunuz kameraya dönük tutun.
+        </p>
+
+        <!-- Alt: 3 El Hareketi Rehberi -->
+        <div class="mp-commands-bar">
+          <div class="gesture-row">
+            <strong>✊ Yumruk (0,6 sn tutun)</strong>
+            <span>Videoyu / sunumu başlatır.</span>
+          </div>
+          <div class="gesture-row">
+            <strong>✋ Sabit Açık El (0,6 sn tutun)</strong>
+            <span>Oynatmayı duraklatır.</span>
+          </div>
+          <div class="gesture-row">
+            <strong>🤏 Pinch + Sağa/Sola Sürükle</strong>
+            <span>Başparmak ve işaret parmağını birleştirip kaydırarak ileri/geri sarar.</span>
+          </div>
+        </div>
+
+        <!-- Bölüm Geçiş Butonları -->
+        <div>
+          <div style="font-size: 16px; font-weight: 700; color: var(--kum); margin-bottom: 10px;">6 Bölümlük Sunum Akışı (Tıklayarak da geçebilirsiniz):</div>
+          <div id="mpChapterButtons" class="mp-chapters-bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. BÖLÜM: KARŞILAŞTIRMALI PROJE RAPORU -->
+  <section id="rapor">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Bilimsel Araştırma Raporu</span>
+        <h2 class="section-title">UNESCO Dünya Mirası Mimari Yapıları Karşılaştırmalı Raporu</h2>
+        <p class="section-desc">Malzeme dayanıklılığı, Pisagor müzik oranları, estetik işçilik ve koruma bilinci üzerine hazırlanan proje raporunun tam metni.</p>
+      </div>
+
+      <div class="report-banner-card">
+        <div>
+          <h3 style="font-size: 32px; color: var(--tas); margin-bottom: 12px;">7 Bölümlük Karşılaştırmalı Rapor ve Özet Tablo</h3>
+          <p style="color: var(--tas-acik); font-size: 20px;">
+            Ahlat ignimbrit tüf taşının laboratuvar özellikleri, Parthenon’un 857,6 mm modül ve 3:2 Pisagor oranları, Roma betonu (opus caementicium), Safranbolu kent planlaması ve taş koruma yöntemlerini içerir.
+          </p>
+        </div>
+        <button id="openReportBtn" type="button" style="background: var(--kiremit); color: var(--beyaz); border: none; padding: 20px 34px; border-radius: 16px; font-size: 21px; font-weight: 700; cursor: pointer; box-shadow: 0 8px 20px rgba(168, 67, 43, 0.25); white-space: nowrap;">
+          📄 Raporu Aç ve İncele
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rapor Okuma Penceresi (Titremesiz ve Kaydırılabilir Modal) -->
+  <div id="reportModal" class="report-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="reportModalTitle">
+    <div class="report-modal-box">
+      <!-- Modal Üst Bar -->
+      <div style="background: var(--tas); color: var(--krem); padding: 22px 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-shrink: 0;">
+        <div>
+          <span style="font-size: 14px; color: var(--kum); font-weight: 700; text-transform: uppercase;">Emre Erkan • 9/E Proje Raporu</span>
+          <h3 id="reportModalTitle" style="color: var(--beyaz); font-size: 25px; margin-top: 2px;">UNESCO Dünya Mirası Mimari Yapıları Karşılaştırmalı Raporu</h3>
+        </div>
+        <button id="closeReportBtn" type="button" style="background: var(--kiremit); color: #fff; border: none; padding: 12px 22px; border-radius: 12px; font-weight: 700; font-size: 18px; cursor: pointer;">
+          ✕ Kapat
+        </button>
+      </div>
+
+      <!-- Modal İçerik Alanı -->
+      <div class="report-modal-body">
+        <h4 style="font-size: 25px; color: var(--kiremit); margin-bottom: 10px;">1. Giriş ve Proje Amacı</h4>
+        <p style="margin-bottom: 22px;">
+          Bu rapor; UNESCO Dünya Mirası Listesi ve Geçici Listesi’nde yer alan dört anıtsal alanı (<strong>Ahlat Selçuklu Meydan Mezarlığı, Parthenon Tapınağı, Safranbolu Şehri ve Roma Kolezyumu</strong>) malzeme nitelikleri, mühendislik yaklaşımları, estetik değerleri ve toplumsal işlevleri açısından karşılaştırmalı olarak incelemektedir.
+        </p>
+
+        <h4 style="font-size: 25px; color: var(--kiremit); margin-bottom: 10px;">2. Malzeme Yapısı ve Dayanıklılık Karşılaştırması</h4>
+        <ul style="margin-left: 24px; margin-bottom: 22px;">
+          <li style="margin-bottom: 8px;"><strong>Ahlat Volkanik Tüf (İgnimbrit):</strong> Krem-beyaz (riyolitik) ve demir mineralli kırmızı-kiremit renkli iki türden oluşur. %27,3 gözeneklilik ve 10,6–11,2 MPa basınç dayanımı ile yumuşaktır; ince oymacılığa uygundur ancak donma-çözünme döngülerine karşı hassastır.</li>
+          <li style="margin-bottom: 8px;"><strong>Parthenon Pentelik Mermeri:</strong> Dübel ve kenetlerle milimetrik toleranslarla birleştirilmiş, yük taşıma kapasitesi ve geometrik hassasiyeti yüksek mermer bloklardır.</li>
+          <li style="margin-bottom: 8px;"><strong>Roma Kolezyumu (Traverten ve Roma Betonu):</strong> Dış taşıyıcı ayaklarda traverten, iç tonozlarda kireç ve volkanik kül karışımlı <em>opus caementicium</em> (antik Roma betonu) kullanılmıştır.</li>
+        </ul>
+
+        <h4 style="font-size: 25px; color: var(--kiremit); margin-bottom: 10px;">3. Mühendislik, Matematik ve Mimari Oranlar</h4>
+        <ul style="margin-left: 24px; margin-bottom: 22px;">
+          <li style="margin-bottom: 8px;"><strong>Parthenon Müzikal Oranları:</strong> Temel modül 857,6 mm (teorik triglif), Parthenon ayağı 343,04 mm (16 Daktil) olarak kurgulanmıştır. Yapıda <strong>4:9</strong> genel oran, Pisagor’un mükemmel beşlisi <strong>3:2</strong> ve <strong>9:6::6:4</strong> geometrik ortalama dizisi yer alır.</li>
+          <li style="margin-bottom: 8px;"><strong>Ahlat ve Safranbolu Mühendisliği:</strong> Ahlat’ta boyu 5 metreyi bulan şahideler yeraltı taş blokaj temellerle sabitlenmiştir. Safranbolu’da ise evler birbirinin güneşini ve manzarasını kesmeyecek şekilde vadi eğimine paralel yerleştirilmiştir.</li>
+        </ul>
+
+        <h4 style="font-size: 25px; color: var(--kiremit); margin-bottom: 10px;">4. Estetik Sanat, Sembolizm ve Koruma Bilinci</h4>
+        <p style="margin-bottom: 22px;">
+          Ahlat mezar taşlarında 32 taş ustasının imzası, Kufi/Sülüs kitabeler, kandil, ejder ve hayat ağacı motifleri yer alır. Tarihi taş eserlerin korunmasında saf su kompresi ile tuz ekstraksiyonu ve kış aylarında nefes alabilen <strong>Tyvek / Typar</strong> koruyucu kılıflar kullanılır.
+        </p>
+
+        <h4 style="font-size: 25px; color: var(--kiremit); margin-bottom: 12px;">5. Karşılaştırmalı Özet Tablo</h4>
+        <div style="overflow-x: auto; border-radius: 14px; border: 1px solid rgba(63,61,58,0.2);">
+          <table style="width: 100%; border-collapse: collapse; font-size: 17px; text-align: left;">
+            <thead style="background: var(--tas); color: var(--kum);">
+              <tr>
+                <th style="padding: 14px;">Yapı / Sit Alanı</th>
+                <th style="padding: 14px;">Malzeme</th>
+                <th style="padding: 14px;">Mühendislik ve Oran</th>
+                <th style="padding: 14px;">Sembolizm ve İşlev</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom: 1px solid #e5dccb;">
+                <td style="padding: 14px; font-weight: 700;">Ahlat Selçuklu Mezarlığı</td>
+                <td style="padding: 14px;">Volkanik tüf (ignimbrit), %27,3 gözenekli</td>
+                <td style="padding: 14px;">Derin zemin taş blokajları ve yeraltı oda mezarlar (Akıt)</td>
+                <td style="padding: 14px;">Orhun Abideleri ile İslam kültürünün sentezi</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e5dccb; background: #faf5eb;">
+                <td style="padding: 14px; font-weight: 700;">Parthenon Tapınağı</td>
+                <td style="padding: 14px;">Pentelik mermer</td>
+                <td style="padding: 14px;">857,6 mm modül, 4:9 ve 3:2 müzikal oran, entasis</td>
+                <td style="padding: 14px;">Atina’nın felsefi, entelektüel ve kozmik düzen simgesi</td>
+              </tr>
+              <tr style="border-bottom: 1px solid #e5dccb;">
+                <td style="padding: 14px; font-weight: 700;">Safranbolu Şehri</td>
+                <td style="padding: 14px;">Ahşap karkas, mavi kalker taş temel, hımış</td>
+                <td style="padding: 14px;">Topoğrafyaya uyumlu organik yerleşim, 98,6 kWh/m² enerji</td>
+                <td style="padding: 14px;">Kervan ticareti ve doğayla uyumlu Osmanlı sivil yaşamı</td>
+              </tr>
+              <tr style="background: #faf5eb;">
+                <td style="padding: 14px; font-weight: 700;">Roma Kolezyumu</td>
+                <td style="padding: 14px;">Traverten, tüf ve Roma betonu</td>
+                <td style="padding: 14px;">80.000 kişilik kemer, tonoz ve vomitorium sistemi</td>
+                <td style="padding: 14px;">Roma İmparatorluğu’nun askeri ve kamusal güç gösterisi</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. BÖLÜM: KAYNAKLAR -->
+  <section id="kaynaklar">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Açık Erişim</span>
+        <h2 class="section-title">Telifsiz Araştırma Kaynakları</h2>
+        <p class="section-desc">Proje araştırmasında ve yapı incelemelerinde yararlanılan uluslararası kültür ve miras arşivleri.</p>
+      </div>
+
+      <div class="sources-grid">
+        <a class="source-card" href="https://whc.unesco.org" target="_blank" rel="noopener">
+          <div>
+            <h3>UNESCO World Heritage Centre</h3>
+            <span>whc.unesco.org</span>
+          </div>
+          <span class="source-arrow">↗</span>
+        </a>
+
+        <a class="source-card" href="https://kulturportali.gov.tr" target="_blank" rel="noopener">
+          <div>
+            <h3>T.C. Kültür Portalı</h3>
+            <span>kulturportali.gov.tr</span>
+          </div>
+          <span class="source-arrow">↗</span>
+        </a>
+
+        <a class="source-card" href="https://www.europeana.eu" target="_blank" rel="noopener">
+          <div>
+            <h3>Europeana</h3>
+            <span>europeana.eu</span>
+          </div>
+          <span class="source-arrow">↗</span>
+        </a>
+
+        <a class="source-card" href="https://artsandculture.google.com" target="_blank" rel="noopener">
+          <div>
+            <h3>Google Arts &amp; Culture</h3>
+            <span>artsandculture.google.com</span>
+          </div>
+          <span class="source-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Alt Bilgi -->
+  <footer>
+    <p><strong>Emre Erkan • 9/E</strong> — UNESCO Dünya Mirası Mimari Karşılaştırmaları eTwinning Projesi</p>
+  </footer>
+
+  <!-- Rapor Modalı ve Canlı MediaPipe El Hareketi Scripti -->
+  <script type="module">
+    // 1. Rapor Modalı Kontrolleri
+    const reportModal = document.getElementById("reportModal");
+    const openReportModal = () => {
+      reportModal.classList.add("is-open");
+      document.body.style.overflow = "hidden";
+    };
+    const closeReportModal = () => {
+      reportModal.classList.remove("is-open");
+      document.body.style.overflow = "";
+    };
+
+    document.getElementById("openReportBtn").addEventListener("click", openReportModal);
+    document.getElementById("closeReportBtn").addEventListener("click", closeReportModal);
+    reportModal.addEventListener("click", (e) => {
+      if (e.target === reportModal) closeReportModal();
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && reportModal.classList.contains("is-open")) closeReportModal();
+    });
+
+    // 2. Canlı MediaPipe El Hareketi Uygulaması
+    const CHAPTERS = [
+      { t: 0.0, title: "1/6 • Giriş – UNESCO Bridges", sub: "Mimari Felsefe, Malzeme ve Mühendislik Farkları", img: "https://commons.wikimedia.org/wiki/Special:FilePath/The_Parthenon_in_Athens.jpg?width=900" },
+      { t: 3.3, title: "2/6 • Megalitik Anıt (Stonehenge)", sub: "Düz lento (trilithon) sistemi ve astronomik gözlem", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Stonehenge2007_07_30.jpg?width=900" },
+      { t: 6.6, title: "3/6 • Antik Roma / Kolezyum", sub: "Kemer, tonoz ve 80.000 kişilik mühendislik", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Rome_-_Exterior_of_the_Colosseum_(5178267201).jpg?width=900" },
+      { t: 10.0, title: "4/6 • Endülüs – Elhamra Mimarisi", sub: "Stuko, ahşap ve geometrik zillij çini zarafeti", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Alhambra_Patio_de_los_Leones.jpg?width=900" },
+      { t: 13.5, title: "5/6 • Geleneksel Osmanlı Evi", sub: "Safranbolu’da doğayla uyumlu sürdürülebilir mimari", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Safranbolu_traditional_houses.jpg?width=900" },
+      { t: 17.0, title: "6/6 • Kapanış – Kültürel Miras", sub: "Emre Erkan • 9/E eTwinning Projesi", img: "https://commons.wikimedia.org/wiki/Special:FilePath/Turkey_Seljuk_Cemetery_Ahlat_(06).jpg?width=900" }
+    ];
+
+    const TOTAL_DUR = 19.8;
+    let simTime = 0;
+    let isPlaying = false;
+    let useRealVideo = false;
+    let lastFrameTime = performance.now();
+
+    const mpVideo = document.getElementById("mpVideo");
+    const mpSlideStage = document.getElementById("mpSlideStage");
+    const mpChapTitle = document.getElementById("mpChapTitle");
+    const mpChapSub = document.getElementById("mpChapSub");
+    const mpPlayState = document.getElementById("mpPlayState");
+    const mpTimeText = document.getElementById("mpTimeText");
+    const mpProgressFill = document.getElementById("mpProgressFill");
+    const mpHoldBadge = document.getElementById("mpHoldBadge");
+    const mpHoldText = document.getElementById("mpHoldText");
+    const mpDetectedGest = document.getElementById("mpDetectedGest");
+    const mpStatusMsg = document.getElementById("mpStatusMsg");
+    const chContainer = document.getElementById("mpChapterButtons");
+
+    CHAPTERS.forEach((ch) => {
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.textContent = ch.title;
+      btn.style.cssText = "text-align:left; background:rgba(246, 239, 224, 0.1); border:1px solid rgba(246, 239, 224, 0.25); padding:10px 14px; border-radius:10px; font-size:15px; font-weight:600; color:var(--krem); cursor:pointer;";
+      btn.onclick = () => {
+        setCurrentTime(ch.t);
+        startPlayback();
+      };
+      chContainer.appendChild(btn);
+    });
+
+    function getDuration() {
+      return (useRealVideo && mpVideo.duration) ? mpVideo.duration : TOTAL_DUR;
+    }
+
+    function getCurrentTime() {
+      return useRealVideo ? mpVideo.currentTime : simTime;
+    }
+
+    function setCurrentTime(t) {
+      const clamped = Math.max(0, Math.min(getDuration() - 0.05, t));
+      if (useRealVideo) mpVideo.currentTime = clamped;
+      else simTime = clamped;
+      updateStageUI();
+    }
+
+    function startPlayback() {
+      isPlaying = true;
+      if (useRealVideo) mpVideo.play().catch(() => {});
+    }
+
+    function pausePlayback() {
+      isPlaying = false;
+      if (useRealVideo) mpVideo.pause();
+    }
+
+    function updateStageUI() {
+      const cur = getCurrentTime();
+      const dur = getDuration();
+      let activeCh = CHAPTERS[0];
+      for (const ch of CHAPTERS) {
+        if (cur >= ch.t) activeCh = ch;
+      }
+      mpChapTitle.textContent = activeCh.title;
+      mpChapSub.textContent = activeCh.sub;
+      if (!useRealVideo) {
+        mpSlideStage.style.backgroundImage = `url('${activeCh.img}')`;
+      }
+      mpPlayState.textContent = isPlaying ? "OYNATILIYOR ▶" : "DURAKLATILDI ⏸";
+      mpTimeText.textContent = `${cur.toFixed(1)} / ${dur.toFixed(1)} sn`;
+      mpProgressFill.style.width = `${(cur / dur) * 100}%`;
+    }
+
+    document.getElementById("mpProgressBar").addEventListener("click", (e) => {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const ratio = (e.clientX - rect.left) / rect.width;
+      setCurrentTime(ratio * getDuration());
+    });
+
+    document.getElementById("mpPickVideoBtn").onclick = () => document.getElementById("mpFileInput").click();
+    document.getElementById("mpFileInput").onchange = (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+      mpVideo.src = URL.createObjectURL(file);
+      mpVideo.style.display = "block";
+      mpSlideStage.style.display = "none";
+      useRealVideo = true;
+      mpStatusMsg.textContent = `Dikey video yüklendi: ${file.name}. Artık el hareketlerinizle kontrol edebilirsiniz.`;
+      startPlayback();
+    };
+
+    updateStageUI();
+
+    // MediaPipe El Tanıma Motoru
+    const CONN = [[0,1],[1,2],[2,3],[3,4],[0,5],[5,6],[6,7],[7,8],[5,9],[9,10],[10,11],[11,12],[9,13],[13,14],[14,15],[15,16],[13,17],[17,18],[18,19],[19,20],[0,17]];
+    const cam = document.getElementById("mpCam");
+    const ov = document.getElementById("mpCanvas");
+    const ctx = ov.getContext("2d");
+
+    let recognizer = null;
+    let lastCamT = -1;
+    let holdKind = null;
+    let holdStart = 0;
+    let holdBlock = 0;
+    let scrubbing = false;
+    let sx0 = 0;
+    let st0 = 0;
+    let wasPlayingBeforeScrub = false;
+
+    const dist = (lm, a, b) => Math.hypot(lm[a].x - lm[b].x, lm[a].y - lm[b].y);
+    const fingersUp = (lm) => [[8,6],[12,10],[16,14],[20,18]].filter(([t,p]) => dist(lm,0,t) > dist(lm,0,p) * 1.05).length;
+
+    function processGesture(gestureName, lm) {
+      const now = performance.now();
+      if (!lm) {
+        holdKind = null;
+        mpHoldBadge.style.display = "none";
+        mpDetectedGest.textContent = "Algılanan: –";
+        if (scrubbing) {
+          scrubbing = false;
+          if (wasPlayingBeforeScrub) startPlayback();
+        }
+        return;
+      }
+
+      const up = fingersUp(lm);
+      const pinchRatio = dist(lm, 4, 8) / (dist(lm, 0, 9) + 1e-6);
+      const isFist = gestureName === "Closed_Fist" || up === 0;
+      const isOpen = gestureName === "Open_Palm" || up >= 4;
+      const isPinch = !isFist && (scrubbing ? pinchRatio < 0.42 : pinchRatio < 0.26);
+
+      if (isPinch) {
+        const handX = 1 - (lm[4].x + lm[8].x) / 2;
+        if (!scrubbing) {
+          scrubbing = true;
+          sx0 = handX;
+          st0 = getCurrentTime();
+          wasPlayingBeforeScrub = isPlaying;
+          pausePlayback();
+          holdKind = null;
+          mpHoldBadge.style.display = "none";
+        }
+        const deltaSec = ((handX - sx0) / 0.5) * getDuration();
+        setCurrentTime(st0 + deltaSec);
+        mpDetectedGest.textContent = "Algılanan: Pinch (Sarma)";
+        return;
+      } else if (scrubbing) {
+        scrubbing = false;
+        if (wasPlayingBeforeScrub) startPlayback();
+      }
+
+      let targetKind = null;
+      if (now > holdBlock) {
+        if (isFist && !isPlaying) targetKind = "fist";
+        else if (isOpen && isPlaying) targetKind = "palm";
+      }
+
+      if (targetKind) {
+        if (holdKind !== targetKind) {
+          holdKind = targetKind;
+          holdStart = now;
+        }
+        const progress = Math.min(1, (now - holdStart) / 650);
+        mpHoldBadge.style.display = "block";
+        mpHoldText.textContent = targetKind === "fist"
+          ? `✊ Başlatılıyor (%${Math.round(progress * 100)})`
+          : `✋ Durduruluyor (%${Math.round(progress * 100)})`;
+        mpDetectedGest.textContent = targetKind === "fist" ? "Algılanan: Yumruk" : "Algılanan: Açık El";
+
+        if (progress >= 1) {
+          if (targetKind === "fist") startPlayback();
+          else pausePlayback();
+          holdKind = null;
+          holdBlock = now + 1100;
+          mpHoldBadge.style.display = "none";
+        }
+      } else {
+        holdKind = null;
+        mpHoldBadge.style.display = "none";
+        mpDetectedGest.textContent = isFist ? "Algılanan: Yumruk" : isOpen ? "Algılanan: Açık El" : "Algılanan: El";
+      }
+    }
+
+    function mainLoop(now) {
+      const dt = (now - lastFrameTime) / 1000;
+      lastFrameTime = now;
+
+      if (isPlaying && !useRealVideo) {
+        simTime += dt;
+        if (simTime >= TOTAL_DUR) simTime = 0;
+      }
+      updateStageUI();
+
+      if (recognizer && cam.readyState >= 2 && cam.currentTime !== lastCamT) {
+        lastCamT = cam.currentTime;
+        const res = recognizer.recognizeForVideo(cam, now);
+        ov.width = cam.videoWidth;
+        ov.height = cam.videoHeight;
+        ctx.clearRect(0, 0, ov.width, ov.height);
+
+        const lm = res.landmarks && res.landmarks[0];
+        if (lm) {
+          ctx.strokeStyle = "#D9A441";
+          ctx.lineWidth = 3;
+          ctx.fillStyle = "#FFFFFF";
+          for (const [a, b] of CONN) {
+            ctx.beginPath();
+            ctx.moveTo(lm[a].x * ov.width, lm[a].y * ov.height);
+            ctx.lineTo(lm[b].x * ov.width, lm[b].y * ov.height);
+            ctx.stroke();
+          }
+          for (const p of lm) {
+            ctx.beginPath();
+            ctx.arc(p.x * ov.width, p.y * ov.height, 4, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          const top = res.gestures[0] && res.gestures[0][0];
+          processGesture(top && top.score > 0.5 ? top.categoryName : "None", lm);
+        } else {
+          processGesture("None", null);
+        }
+      }
+      requestAnimationFrame(mainLoop);
+    }
+    requestAnimationFrame(mainLoop);
+
+    document.getElementById("mpStartBtn").onclick = async function () {
+      const btn = this;
+      btn.disabled = true;
+      mpStatusMsg.textContent = "Kamera açılıyor, lütfen tarayıcı iznini onaylayın...";
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ video: { width: 640, height: 480, facingMode: "user" }, audio: false });
+        cam.srcObject = stream;
+        await cam.play();
+
+        mpStatusMsg.textContent = "MediaPipe el tanıma modeli yükleniyor...";
+        const BASES = [
+          "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.14",
+          "https://unpkg.com/@mediapipe/tasks-vision@0.10.14"
+        ];
+        let vision = null, activeBase = null;
+        for (const b of BASES) {
+          try {
+            vision = await import(b + "/vision_bundle.mjs");
+            activeBase = b;
+            break;
+          } catch (e) {}
+        }
+        if (!vision) throw new Error("MediaPipe kütüphanesi yüklenemedi.");
+
+        const fileset = await vision.FilesetResolver.forVisionTasks(activeBase + "/wasm");
+        const modelUrl = "https://storage.googleapis.com/mediapipe-models/gesture_recognizer/gesture_recognizer/float16/latest/gesture_recognizer.task";
+        for (const delegate of ["GPU", "CPU"]) {
+          try {
+            recognizer = await vision.GestureRecognizer.createFromOptions(fileset, {
+              baseOptions: { modelAssetPath: modelUrl, delegate },
+              runningMode: "VIDEO",
+              numHands: 1,
+              minHandDetectionConfidence: 0.55,
+              minTrackingConfidence: 0.55
+            });
+            break;
+          } catch (e) {}
+        }
+        if (!recognizer) throw new Error("El tanıma modeli başlatılamadı.");
+
+        btn.textContent = "✅ Kamera Aktif";
+        mpStatusMsg.textContent = "Hazır! Elinizi kameraya gösterin: Başlatmak için yumruk, durdurmak için açık el yapın.";
+      } catch (err) {
+        btn.disabled = false;
+        mpStatusMsg.textContent = "Kamera veya model başlatılamadı (" + (err.message || "HTTPS/localhost veya kamera izni gerekli") + "). Bölüm butonlarına tıklayarak da test edebilirsiniz.";
+      }
+    };
+  </script>
+</body>
+</html>
